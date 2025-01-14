@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <unistd.h>
+# include <limits.h>
+#include <stdarg.h>
 
 // LIBC
 int					ft_isalpha(int c);
@@ -71,4 +73,16 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+// ZIYADA
+//##PRINTF_FD##
+int	ft_printstr(char *str, int fd);
+int	ft_printptr(unsigned long ptr, int fd);
+int	ft_printnbr(int nb, int fd);
+int	ft_printhex(unsigned long nbr, char arg, int fd);
+int	ft_printf_fd(int fd, const char *format, ...);
+int	ft_printchar(char arg, int fd);
+int	ft_print_unsigned(unsigned int nbr, int fd);
+//##OTHER##
+long	ft_atol(char *str);
 #endif

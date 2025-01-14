@@ -1,7 +1,7 @@
 ##########################################################
 ## ARGUMENTS
 
-NAME = libft.a 
+NAME = libft.a
 CC = cc
 FLAGS = -Wall -Wextra -Werror -I.
 AR = ar
@@ -21,35 +21,44 @@ FILES = ft_strdup.c ft_atoi.c ft_bzero.c \
 		ft_putchar_fd.c ft_itoa.c ft_putnbr_fd.c \
 		ft_substr.c ft_putendl_fd.c ft_strmapi.c \
 		ft_strtrim.c ft_striteri.c ft_strjoin.c \
-		ft_split.c \
+		ft_split.c
 
-OBJS = ${FILES:.c=.o}
+OBJS = $(FILES:.c=.o)
 
-BONUS	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
-		ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c \
+BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
+		ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
-BOBJS	=	$(BONUS:.c=.o)
+ZIYADA = ft_atol.c
+
+PRINTFD = ft_printf_fd/ft_print_unsigned.c ft_printf_fd/ft_printchar.c \
+          ft_printf_fd/ft_printf_fd.c ft_printf_fd/ft_printhex.c \
+          ft_printf_fd/ft_printnbr.c ft_printf_fd/ft_printptr.c \
+          ft_printf_fd/ft_printstr.c
+
+BOBJS = $(BONUS:.c=.o)
+ZIYOBJS = $(ZIYADA:.c=.o)
+PRINTOBJS = $(PRINTFD:.c=.o)
 
 ##########################################################
 ## RULES
 
-.c.o: 	
-		${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+.c.o:
+	${CC} ${FLAGS} -c $< -o $@
 
-${NAME}: 	${OBJS}
-		ar rcs ${NAME} ${OBJS} 
+${NAME}: $(OBJS) $(BOBJS) $(ZIYOBJS) $(PRINTOBJS)
+	${AR} rcs ${NAME} $(OBJS) $(BOBJS) $(ZIYOBJS) $(PRINTOBJS)
 
-all: 		$(NAME)
+all: $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(BOBJS)
+	${RM} $(OBJS) $(BOBJS) $(ZIYOBJS) $(PRINTOBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	${RM} ${NAME}
 
-re: clean all
+re: fclean all
 
-bonus:	$(OBJS) $(BOBJS)
-		ar rcs $(NAME) $(OBJS) $(BOBJS)
+bonus: $(BOBJS) $(ZIYOBJS) $(PRINTOBJS)
+	${AR} rcs ${NAME} $(OBJS) $(BOBJS) $(ZIYOBJS) $(PRINTOBJS)
 
-.PHONY:		all clean fclean re bonus
+.PHONY: all clean fclean re bonus
