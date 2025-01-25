@@ -28,7 +28,7 @@ OBJS = $(FILES:.c=.o)
 BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 		ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
-ZIYADA = ft_atol.c
+ZIYADA = ft_atol.c get_next_line.c ft_strictcmp.c ft_rsubstr.c\
 
 PRINTFD = ft_printf_fd/ft_print_unsigned.c ft_printf_fd/ft_printchar.c \
           ft_printf_fd/ft_printf_fd.c ft_printf_fd/ft_printhex.c \

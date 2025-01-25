@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ankammer <ankammer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ankammer <ankammer@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:38:27 by ankammer          #+#    #+#             */
-/*   Updated: 2023/11/20 16:18:33 by ankammer         ###   ########.fr       */
+/*   Updated: 2025/01/25 22:04:16 by ankammer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <limits.h>
+# include <stdarg.h>
 # include <stddef.h>
 # include <stdlib.h>
 # include <sys/types.h>
 # include <unistd.h>
-# include <limits.h>
-#include <stdarg.h>
+# define BUFFER_SIZE 42
 
 // LIBC
 int					ft_isalpha(int c);
@@ -76,13 +77,17 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 
 // ZIYADA
 //##PRINTF_FD##
-int	ft_printstr(char *str, int fd);
-int	ft_printptr(unsigned long ptr, int fd);
-int	ft_printnbr(int nb, int fd);
-int	ft_printhex(unsigned long nbr, char arg, int fd);
-int	ft_printf_fd(int fd, const char *format, ...);
-int	ft_printchar(char arg, int fd);
-int	ft_print_unsigned(unsigned int nbr, int fd);
+int					ft_printstr(char *str, int fd);
+int					ft_printptr(unsigned long ptr, int fd);
+int					ft_printnbr(int nb, int fd);
+int					ft_printhex(unsigned long nbr, char arg, int fd);
+int					ft_printf_fd(int fd, const char *format, ...);
+int					ft_printchar(char arg, int fd);
+int					ft_print_unsigned(unsigned int nbr, int fd);
+//##GET NEXT LINE##
+char				*get_next_line(int fd);
 //##OTHER##
-long	ft_atol(char *str);
+long				ft_atol(char *str);
+int					ft_strictcmp(const char *s1, const char *s2);
+char				*ft_rsubstr(char const *s, unsigned int end, size_t len);
 #endif
