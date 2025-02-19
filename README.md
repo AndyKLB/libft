@@ -31,4 +31,5 @@ gcc -Wall -Wextra -Werror
 ## Auteurs
 
 Projet réalisé dans le cadre de l'école 42.
+ankammer.
 
